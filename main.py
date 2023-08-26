@@ -19,6 +19,7 @@ db_name = "vacancies"
 
 params = config()
 
+
 def main():
     vacancies_list = get_vacancies(companies)
     create_database(db_name, params)
@@ -47,6 +48,7 @@ def main():
     # print(dbmanager.get_vacancies_with_higher_salary())
     # print(dbmanager.get_vacancies_with_keyword(["Python", "Разработчик"]))
     dbmanager.close_connection()
+
 
 if __name__ == '__main__':
     main()
