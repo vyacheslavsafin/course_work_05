@@ -23,6 +23,13 @@ class DBManager:
         vacancies_list = self.cur.fetchall()
         return vacancies_list
 
+    def get_avg_salary(self):
+        """получает среднюю зарплату по вакансиям"""
+        self.cur.execute("SELECT AVG(vacancy_salary_from) AS avg_salary_from,"
+                         " AVG(vacancy_salary_to) AS avg_salary_to FROM vacancies")
+        average_salary = self.cur.fetchall()
+        return average_salary
+
     def close_connection(self):
         """закрывает соединение с БД"""
         self.cur.close()
