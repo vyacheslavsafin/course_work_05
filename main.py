@@ -1,3 +1,4 @@
+from classes.dbmanager import DBManager
 from config import config
 from utils.utils import *
 
@@ -38,6 +39,9 @@ def main():
                 print("Связывание таблиц прошло успешно")
     finally:
         conn.close()
+
+    dbmanager = DBManager(params)
+    print(dbmanager.get_companies_and_vacancies_count())
 
 if __name__ == '__main__':
     main()
