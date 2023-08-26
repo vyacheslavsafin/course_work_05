@@ -38,6 +38,14 @@ class DBManager:
         average_salary_list = self.cur.fetchall()
         return average_salary_list
 
+    def get_vacancies_with_keyword(self, list_):
+        """получает список всех вакансий, в названии которых содержатся переданные в метод слова, например python"""
+        result = []
+        for word in list_:
+            self.cur.execute(f"SELECT * FROM vacancies WHERE vacancy_name LIKE '%{word}%'")
+            result.append(self.cur.fetchall())
+        return result
+
     def close_connection(self):
         """закрывает соединение с БД"""
         self.cur.close()

@@ -44,7 +44,8 @@ def main():
     # print(dbmanager.get_companies_and_vacancies_count())
     # print(dbmanager.get_all_vacancies())
     # print(dbmanager.get_avg_salary())
-    print(dbmanager.get_vacancies_with_higher_salary())
+    # print(dbmanager.get_vacancies_with_higher_salary())
+    print(dbmanager.get_vacancies_with_keyword(["Python", "Разработчик"]))
 
 if __name__ == '__main__':
     main()
