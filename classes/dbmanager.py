@@ -30,6 +30,14 @@ class DBManager:
         average_salary = self.cur.fetchall()
         return average_salary
 
+    def get_vacancies_with_higher_salary(self):
+        """получает список всех вакансий, у которых зарплата выше средней по всем вакансиям"""
+        self.cur.execute("SELECT * FROM vacancies"
+                         " WHERE vacancy_salary_from > (SELECT AVG(vacancy_salary_from) FROM vacancies) OR"
+                         " vacancy_salary_to > (SELECT AVG(vacancy_salary_to) FROM vacancies)")
+        average_salary_list = self.cur.fetchall()
+        return average_salary_list
+
     def close_connection(self):
         """закрывает соединение с БД"""
         self.cur.close()
