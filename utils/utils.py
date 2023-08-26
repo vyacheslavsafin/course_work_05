@@ -81,3 +81,12 @@ def create_vacancy_table(cur):
         );
     """
     cur.execute(query)
+
+
+def insert_to_companies_table(cur, companies):
+    """Заполнение таблицы companies"""
+    for company in companies:
+        cur.execute("""
+        INSERT INTO companies (company_id, company_name)
+        VALUES(%s, %s)
+        """, (company, companies[company]))

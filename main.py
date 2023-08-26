@@ -30,6 +30,8 @@ def main():
                 print("Таблица companies создана успешно")
                 create_vacancy_table(cur)
                 print("Таблица vacancies создана успешно")
+                insert_to_companies_table(cur, companies)
+                print("Таблица companies заполнена")
     finally:
         conn.close()
 
