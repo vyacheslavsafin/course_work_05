@@ -50,3 +50,16 @@ def create_database(db_name, params):
     cur.execute('CREATE DATABASE ' + db_name)
     cur.close()
     conn.close()
+
+
+def create_company_table(cur):
+    """Создание таблицы companies"""
+    query = """
+        DROP TABLE IF EXISTS companies;
+        CREATE TABLE companies
+        (
+            company_id int PRIMARY KEY,
+            company_name varchar(50) NOT NULL
+        );
+    """
+    cur.execute(query)
