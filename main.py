@@ -41,7 +41,8 @@ def main():
         conn.close()
 
     dbmanager = DBManager(params)
-    print(dbmanager.get_companies_and_vacancies_count())
+    # print(dbmanager.get_companies_and_vacancies_count())
+    print(dbmanager.get_all_vacancies())
 
 if __name__ == '__main__':
     main()

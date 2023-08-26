@@ -16,6 +16,13 @@ class DBManager:
         companies_list = self.cur.fetchall()
         return companies_list
 
+    def get_all_vacancies(self):
+        """получает список всех вакансий с указанием названия компании, названия вакансии и зарплаты и ссылки на вакансию"""
+        self.cur.execute("SELECT company_name, vacancy_name, vacancy_salary_from, vacancy_salary_to, vacancy_url"
+                         " FROM vacancies JOIN companies USING(company_id)")
+        vacancies_list = self.cur.fetchall()
+        return vacancies_list
+
     def close_connection(self):
         """закрывает соединение с БД"""
         self.cur.close()
