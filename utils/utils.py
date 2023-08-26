@@ -108,3 +108,7 @@ def insert_to_vacancies_table(cur, vacancies_list):
               ))
 
 
+def add_foreign_key(cur):
+    """Связывание таблиц по столбцу company_id"""
+    cur.execute("ALTER TABLE vacancies ADD CONSTRAINT fk_vacancies_company_id"
+                " FOREIGN KEY (company_id) REFERENCES companies (company_id)")

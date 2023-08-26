@@ -34,6 +34,8 @@ def main():
                 print("Таблица companies заполнена")
                 insert_to_vacancies_table(cur, vacancies_list)
                 print("Таблица vacancies заполнена")
+                add_foreign_key(cur)
+                print("Связывание таблиц прошло успешно")
     finally:
         conn.close()
 
