@@ -63,3 +63,21 @@ def create_company_table(cur):
         );
     """
     cur.execute(query)
+
+
+def create_vacancy_table(cur):
+    """Создание таблицы vacancies"""
+    query = """
+        DROP TABLE IF EXISTS vacancies;
+        CREATE TABLE vacancies
+        (
+            vacancy_id int PRIMARY KEY,
+            vacancy_name varchar(100) NOT NULL,
+            vacancy_salary_from int,
+            vacancy_salary_to int,
+            vacancy_url text,
+            company_id int,
+            published_date date
+        );
+    """
+    cur.execute(query)

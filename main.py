@@ -28,6 +28,8 @@ def main():
             with conn.cursor() as cur:
                 create_company_table(cur)
                 print("Таблица companies создана успешно")
+                create_vacancy_table(cur)
+                print("Таблица vacancies создана успешно")
     finally:
         conn.close()
 
