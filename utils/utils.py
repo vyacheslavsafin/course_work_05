@@ -1,4 +1,5 @@
 from typing import Any
+import psycopg2
 import requests
 
 HEAD_HUNTER_URL = 'https://api.hh.ru/vacancies'
@@ -37,5 +38,15 @@ def get_vacancies(companies: dict) -> list[dict[str, Any]]:
                              'company_id': vacancy['employer']['id'],
                              'published_date': vacancy['published_at']
                              })
-    # return all_vacs
-    print(all_vacs)
+    return all_vacs
+
+
+def create_database(db_name, params):
+    """Создание базы данных"""
+    conn = psycopg2.connect(dbname="postgres", **params)
+    conn.autocommit = True
+    cur = conn.cursor()
+    cur.execute('DROP DATABASE IF EXISTS ' + db_name)
+    cur.execute('CREATE DATABASE ' + db_name)
+    cur.close()
+    conn.close()
