@@ -90,3 +90,21 @@ def insert_to_companies_table(cur, companies):
         INSERT INTO companies (company_id, company_name)
         VALUES(%s, %s)
         """, (company, companies[company]))
+
+
+def insert_to_vacancies_table(cur, vacancies_list):
+    """Заполнение таблицы vacancies"""
+    for vacancy in vacancies_list:
+        cur.execute("""
+        INSERT INTO vacancies (vacancy_id, vacancy_name, vacancy_salary_from, vacancy_salary_to, vacancy_url, company_id, published_date)
+        VALUES(%s, %s, %s, %s, %s, %s, %s)
+        """, (vacancy["vacancy_id"],
+              vacancy["vacancy_name"],
+              vacancy["vacancy_salary_from"],
+              vacancy["vacancy_salary_to"],
+              vacancy["vacancy_url"],
+              vacancy["company_id"],
+              vacancy["published_date"]
+              ))
+
+
